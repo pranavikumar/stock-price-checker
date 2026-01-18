@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stock Price Checker</title>
+    </head>
+    <body>
+        {% block content %}
+        <h1>Stock Price Checker</h1>
+        <p>
+            Enter a ticker symbol and a time interval to get a graph of the price!
+        </p>
+        <form method="POST" action="info">
+            <div>
+                <label for="symbol">Ticker Symbol</label>
+                <input type="text" name="symbol" placeholder="Enter ticker symbol" />
+            </div>
+            <p>
+                Interval
+            </p>
+            <div>
+                <input
+                    type="radio"
+                    id="daily"
+                    name="interval"
+                    value="TIME_SERIES_DAILY"
+                    checked
+                />
+                <label for="daily">Daily</label>
+            </div>
+            <div>
+                <input
+                    type="radio"
+                    id="weekly"
+                    name="interval"
+                    value="TIME_SERIES_WEEKLY"
+                />
+                <label for="weekly">Weekly</label>
+            </div>
+            <div>
+                <input
+                    type="radio"
+                    id="monthly"
+                    name="interval"
+                    value="TIME_SERIES_MONTHLY"
+                />
+                <label for="monthly">Monthly</label>
+            </div>
+            <button type="submit" value="Submits">Submit</button>
+        </form>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        {% endblock %}
+    </body>
+</html>
